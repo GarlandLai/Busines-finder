@@ -2,6 +2,8 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    origin = params[:origin]
+    @restaurants = Restaurant.search(:origin)
     json_response(@restaurants)
   end
 
@@ -32,6 +34,12 @@ class RestaurantsController < ApplicationController
       }
     end
   end
+
+  def random
+    @restaurant = Restaurant.random
+    json_response(@restaurant)
+  end
+
 
   private
   def restaurant_params
