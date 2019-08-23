@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class V1::ReviewsController < ApplicationController
 
   def index
     @restaurants = Restaurant.find(params[:restaurant_id])

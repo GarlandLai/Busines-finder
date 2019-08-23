@@ -12,7 +12,7 @@ class Seed
         origin: Faker::Restaurant.type,
         location: Faker::Address.street_address
       )
-      rand(1..3).times do |i|
+      rand(2..4).times do |i|
         review = restaurant.reviews.create!(
           name: Faker::Name.first_name,
           rating: Faker::Number.within(range: 1..5),

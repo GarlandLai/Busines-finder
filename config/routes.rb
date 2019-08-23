@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
-  get "/restaurants/random" => 'restaurants#random'
+  concern :api_base do
+    get "/restaurants/random" => 'restaurants#random'
+    resources :restaurants do
+      resources :reviews
+    end
+  end
 
-  resources :restaurants do
-    resources :reviews
+  namespace :v1 do
+    concerns :api_base
   end
 end
