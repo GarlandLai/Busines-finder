@@ -6,7 +6,7 @@ class Seed
   end
 
   def generate_restaurants
-    5.times do |i|
+    20.times do |i|
       restaurant = Restaurant.create!(
         name: Faker::Restaurant.name,
         origin: Faker::Restaurant.type,
