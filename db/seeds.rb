@@ -6,10 +6,10 @@ class Seed
   end
 
   def generate_restaurants
-    10.times do |i|
+    5.times do |i|
       restaurant = Restaurant.create!(
         name: Faker::Restaurant.name,
-        type: Faker::Restaurant.type,
+        origin: Faker::Restaurant.type,
         location: Faker::Address.street_address
       )
       rand(1..3).times do |i|
@@ -19,7 +19,7 @@ class Seed
           content: Faker::Restaurant.review
         )
       end
-      puts "Restaurant #{i}: name is #{restaurant.name} and type is '#{restaurant.type}'."
+      puts "Restaurant #{i}: name is #{restaurant.name} and type is '#{restaurant.origin}'."
     end
   end
 end
