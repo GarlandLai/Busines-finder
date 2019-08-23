@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-FactoryBot.find_definitions
+# FactoryBot.find_definitions
 describe "post a restaurant route", :type => :request do
 
   before do
