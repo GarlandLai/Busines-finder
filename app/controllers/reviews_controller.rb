@@ -6,6 +6,12 @@ class ReviewsController < ApplicationController
     json_response(@reviews)
   end
 
+  def new
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = @restaurant.reviews.new
+    json_response(@review)
+  end
+
   def show
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = @restaurant.reviews.find(params[:id])
@@ -14,7 +20,8 @@ class ReviewsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @review = @restaurant.reviews.create!(review_params,:created)
+    @review = @restaurant.reviews.create!(review_params)
+    json_response(@review, :created)
   end
 
   def update
