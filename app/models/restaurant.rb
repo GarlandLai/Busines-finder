@@ -5,5 +5,5 @@ class Restaurant < ApplicationRecord
 
   scope :random, -> {order("RANDOM()").limit(1)}
 
-  # scope :search, -> (origin_parameter) { where("Origin like ?", "%#{origin_parameter}%")}
+  scope :search, -> (origin_parameter) { where("Origin like ?", "%#{origin_parameter}%")}
 end
