@@ -14,19 +14,27 @@ class ReviewsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @review = @restaurant.reviews.create!(reviews_params)
+    @review = @restaurant.reviews.create!(review_params,:created)
   end
 
   def update
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = @restaurant.reviews.find(params[:id])
-    @reviews.update!(review_params)
+    if @review.update!(review_params)
+      render status: 200, json: {
+        message: "Review successfully updated!"
+      }
+    end
   end
 
   def destroy
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @reviews = @restaurant.reviews.find(params[:id])
-    @reviews.update!(reviews_params)
+    @review = @restaurant.reviews.find(params[:id])
+    if @review.update(review_params)
+      render status: 200, json: {
+        message: "Restaurant has been deleted"
+      }
+    end
   end
 
   private

@@ -2,27 +2,35 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
-    json_response(@quotes)
+    json_response(@restaurants)
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    json_response(@quote)
+    json_response(@restaurant)
   end
 
   def create
     @restaurant = Restaurant.create!(restaurant_params)
-    json_response(@restaurant)
+    json_response(@restaurant, :created)
   end
 
   def update
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.update!(restaurant_params)
+    if @restaurant.update!(restaurant_params)
+      render status: 200, json: {
+        message: "Restaurant successfully updated!"
+      }
+    end
   end
 
   def destroy
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.destroy!
+    if @restaurant.destroy!
+      render status: 200, json: {
+        message: "Restaurant has been deleted"
+      }
+    end
   end
 
   private
