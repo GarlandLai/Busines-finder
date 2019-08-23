@@ -4,6 +4,7 @@ class AddReviewsTable < ActiveRecord::Migration[5.2]
       t.column :name, :string
       t.column :rating, :string
       t.column :content, :string
+      t.column :restaurant_id, :integer
       t.timestamps()
     end
   end

@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_08_23_155813) do
     t.string "name"
     t.string "rating"
     t.string "content"
+    t.integer "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
