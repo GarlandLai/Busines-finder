@@ -4,7 +4,7 @@ require 'rails_helper'
 describe "post a restaurant route", :type => :request do
 
   before do
-    post '/restaurants', params: { :name => 'test_name', :origin => 'test_origin', :location => 'test_location'}
+    post '/v1/restaurants', params: { :name => 'test_name', :origin => 'test_origin', :location => 'test_location'}
   end
 
   it 'returns the restaurants name ' do

@@ -5,7 +5,7 @@ FactoryBot.find_definitions
 describe "get all restaurants route", :type => :request do
   let!(:restaurants) { FactoryBot.create_list(:restaurant, 20)}
 
-  before { get '/restaurants'}
+  before { get '/v1/restaurants'}
 
   it 'returns all restaurants' do
     expect(JSON.parse(response.body).size).to eq(20)
